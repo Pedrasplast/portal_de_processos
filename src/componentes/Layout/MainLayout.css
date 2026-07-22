@@ -3,6 +3,8 @@
   min-height: 100vh;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   background-color: #f8fafc;
+  width: 100%;
+  position: relative;
 }
 
 .main-layout-right {
@@ -10,9 +12,35 @@
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
+  /* Garante que o conteúdo direito ocupe o espaço restante e redimensione direito */
+  min-width: 0; 
 }
 
 .main-content-area {
   flex: 1;
   padding: 30px;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* =========================================
+   RESPONSIVIDADE (Tablets e Celulares)
+   ========================================= */
+
+@media (max-width: 1024px) {
+  .main-content-area {
+    padding: 20px;
+  }
+}
+
+@media (max-width: 768px) {
+  .main-layout-container {
+    /* Se o seu sidebar for fixo ou flutuante em mobile, 
+       isso garante que a coluna principal empilhe ou ajuste corretamente */
+    flex-direction: column;
+  }
+
+  .main-content-area {
+    padding: 15px;
+  }
 }

@@ -10,6 +10,7 @@
   transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   z-index: 100;
   box-sizing: border-box;
+  flex-shrink: 0;
 }
 
 .sidebar-brand {
@@ -18,6 +19,7 @@
   display: flex;
   align-items: center;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .sidebar-brand h3 {
@@ -36,6 +38,8 @@
   padding: 20px 12px;
   gap: 8px;
   overflow-y: auto;
+  box-sizing: border-box;
+  width: 100%;
 }
 
 .sidebar-item {
@@ -61,6 +65,7 @@
   min-width: 20px;
   font-size: 18px;
   transition: transform 0.2s ease;
+  flex-shrink: 0;
 }
 
 .sidebar-item:hover {
@@ -79,7 +84,10 @@
   box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
 }
 
-/* Responsividade: Transforma em barra lateral compacta (só ícones) em telas menores */
+/* =========================================
+   RESPONSIVIDADE (Tablets e Celulares)
+   ========================================= */
+
 @media (max-width: 768px) {
   .app-sidebar {
     width: 76px;
@@ -91,7 +99,7 @@
   }
 
   .sidebar-brand h3 {
-    display: none; /* Oculta o texto da marca em telas pequenas */
+    display: none; 
   }
 
   .sidebar-menu {
@@ -105,10 +113,19 @@
     gap: 0;
   }
 
-  /* Oculta o texto do item de menu, mostrando apenas o ícone centralizado */
   .sidebar-item span, 
   .sidebar-item .menu-text {
     display: none; 
   }
 }
 
+/* Em smartphones muito pequenos, garante fluidez total sem quebrar elementos */
+@media (max-width: 480px) {
+  .app-sidebar {
+    width: 64px;
+  }
+  
+  .sidebar-item {
+    padding: 10px;
+  }
+}

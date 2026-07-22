@@ -3,10 +3,12 @@
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  min-height: 100dvh; /* Adapta-se melhor a barras de navegação mobile */
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   padding: 20px;
   box-sizing: border-box;
+  width: 100%;
 }
 
 .login-box {
@@ -38,6 +40,7 @@
   font-weight: 700;
   text-align: center;
   letter-spacing: -0.5px;
+  word-break: break-word;
 }
 
 .login-box p {
@@ -45,6 +48,7 @@
   font-size: 14px;
   text-align: center;
   margin: 0 0 28px 0;
+  line-height: 1.4;
 }
 
 .login-error {
@@ -57,10 +61,15 @@
   font-weight: 500;
   margin-bottom: 20px;
   text-align: center;
+  box-sizing: border-box;
+  width: 100%;
+  word-break: break-word;
 }
 
 .input-group {
   margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .input-group label {
@@ -77,7 +86,7 @@
   padding: 12px 14px;
   border: 1.5px solid #e2e8f0;
   border-radius: 8px;
-  font-size: 14px;
+  font-size: 16px; /* Evita zoom automático indesejado em alguns navegadores mobile */
   color: #1e293b;
   background-color: #f8fafc;
   box-sizing: border-box;
@@ -107,6 +116,7 @@
   cursor: pointer;
   transition: background-color 0.2s, transform 0.1s;
   margin-top: 6px;
+  box-sizing: border-box;
   box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
 }
 
@@ -125,18 +135,6 @@
   transform: none;
 }
 
-/* Responsividade extra para celulares pequenos */
-@media (max-width: 480px) {
-  .login-box {
-    padding: 28px 20px;
-    border-radius: 12px;
-  }
-  
-  .login-box h2 {
-    font-size: 22px;
-  }
-}
-
 .back-home-button {
   width: 100%;
   display: flex;
@@ -152,6 +150,7 @@
   font-weight: 500;
   cursor: pointer;
   margin-top: 12px;
+  box-sizing: border-box;
   transition: all 0.2s ease;
 }
 
@@ -171,4 +170,40 @@
   background-color: #d1fae5;
   color: #059669;
   border-color: #6ee7b7;
+}
+
+/* =========================================
+   RESPONSIVIDADE (Tablets e Celulares)
+   ========================================= */
+
+@media (max-width: 480px) {
+  .login-container {
+    padding: 16px;
+    align-items: flex-start; /* Permite rolagem natural se o teclado virtual abrir */
+    padding-top: 40px;
+  }
+
+  .login-box {
+    padding: 28px 20px;
+    border-radius: 12px;
+  }
+  
+  .login-box h2 {
+    font-size: 22px;
+  }
+
+  .login-box p {
+    font-size: 13px;
+    margin-bottom: 22px;
+  }
+
+  .input-group input {
+    padding: 11px 12px;
+  }
+
+  .login-button,
+  .back-home-button {
+    padding: 12px;
+    font-size: 14px;
+  }
 }

@@ -34,25 +34,24 @@
 
 .pops-header {
   margin-bottom: 20px;
+  width: 100%;
+  box-sizing: border-box;
 }
 
 .pops-header h2 {
   margin: 0;
-
   color: var(--pops-heading);
-
   font-size: clamp(1.45rem, 2.5vw, 2rem);
   font-weight: 800;
   line-height: 1.2;
   letter-spacing: -0.025em;
+  word-break: break-word;
 }
 
 .pops-header p {
   max-width: 760px;
   margin: 8px 0 0;
-
   color: var(--pops-muted);
-
   font-size: 0.92rem;
   line-height: 1.6;
 }
@@ -66,17 +65,15 @@
   width: 100%;
   margin: 0 0 22px;
   padding: 13px;
-
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   gap: 8px;
-
   background: var(--pops-background);
   border: 1px solid var(--pops-border);
   border-radius: 14px;
-
-  box-shadow:
+  box-sizing: border-box;
+  box-shadow: 
     0 1px 2px rgba(15, 23, 42, 0.03),
     0 8px 24px rgba(15, 23, 42, 0.045);
 }
@@ -84,27 +81,21 @@
 .setor-chip {
   min-height: 35px;
   padding: 0 13px;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
   flex: 0 0 auto;
-
   color: #475569;
   background: var(--pops-background-soft);
-
   border: 1px solid #dbe3ec;
   border-radius: 9px;
-
   font-size: 0.72rem;
   font-weight: 750;
   line-height: 1;
   letter-spacing: 0.015em;
   white-space: nowrap;
-
   cursor: pointer;
-
-  transition:
+  transition: 
     color 160ms ease,
     background-color 160ms ease,
     border-color 160ms ease,
@@ -116,7 +107,6 @@
   color: var(--pops-primary-dark);
   background: var(--pops-primary-light);
   border-color: #7dd3fc;
-
   box-shadow: 0 4px 10px rgba(14, 165, 233, 0.1);
   transform: translateY(-1px);
 }
@@ -127,24 +117,20 @@
 
 .setor-chip.active {
   color: #ffffff;
-
   background: linear-gradient(
     135deg,
     var(--pops-primary) 0%,
     var(--pops-primary-dark) 100%
   );
-
   border-color: var(--pops-primary);
-
-  box-shadow:
+  box-shadow: 
     0 5px 14px rgba(2, 132, 199, 0.22),
     inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 
 .setor-chip:focus-visible {
   outline: none;
-
-  box-shadow:
+  box-shadow: 
     0 0 0 3px rgba(14, 165, 233, 0.2),
     0 4px 10px rgba(14, 165, 233, 0.12);
 }
@@ -156,20 +142,16 @@
 
 .pops-table-wrapper {
   position: relative;
-
   width: 100%;
   overflow-x: auto;
   overflow-y: hidden;
-
   background: var(--pops-background);
-
   border: 1px solid var(--pops-border);
   border-radius: 14px;
-
-  box-shadow:
+  box-sizing: border-box;
+  box-shadow: 
     0 1px 2px rgba(15, 23, 42, 0.035),
     0 12px 32px rgba(15, 23, 42, 0.055);
-
   scrollbar-width: thin;
   scrollbar-color: #cbd5e1 #f8fafc;
 }
@@ -185,7 +167,6 @@
 
 .pops-table-wrapper::-webkit-scrollbar-thumb {
   background: #cbd5e1;
-
   border: 2px solid #f8fafc;
   border-radius: 999px;
 }
@@ -202,10 +183,8 @@
 .pops-table {
   width: 100%;
   min-width: 920px;
-
   color: var(--pops-text);
   background: var(--pops-background);
-
   border-collapse: separate;
   border-spacing: 0;
   table-layout: fixed;
@@ -223,24 +202,19 @@
 
 .pops-table thead th {
   padding: 15px 18px;
-
   color: #1e293b;
-
   background: linear-gradient(
     180deg,
     #f8fafc 0%,
     #f1f5f9 100%
   );
-
   border-right: 1px solid var(--pops-border);
   border-bottom: 1px solid #cbd5e1;
-
   font-size: 0.75rem;
   font-weight: 850;
   line-height: 1.2;
   letter-spacing: 0.045em;
   text-transform: uppercase;
-
   vertical-align: middle;
 }
 
@@ -257,7 +231,6 @@
   width: calc(
     100% - var(--pops-sector-width) - var(--pops-download-width)
   );
-
   text-align: left;
 }
 
@@ -280,32 +253,25 @@
   transition: background-color 160ms ease;
 }
 
-/* Linhas ímpares */
 .pops-table tbody tr:nth-child(odd) > td {
   background-color: #ffffff;
 }
 
-/* Linhas pares */
 .pops-table tbody tr:nth-child(even) > td {
   background-color: var(--pops-row-even);
 }
 
-/* Destaque da linha inteira */
 .pops-table tbody tr:hover > td {
   background-color: var(--pops-row-hover);
 }
 
-/* Configuração das células */
 .pops-table tbody td {
   height: 66px;
   padding: 14px 18px;
-
   border-right: 1px solid var(--pops-border-light);
   border-bottom: 1px solid #d8e1ea;
-
   vertical-align: middle;
-
-  transition:
+  transition: 
     background-color 160ms ease,
     border-color 160ms ease;
 }
@@ -338,17 +304,11 @@
   overflow-wrap: anywhere;
 }
 
-/*
- * Mantido apenas para compatibilidade com documentos
- * antigos que ainda utilizem o ícone geral.
- */
 .file-icon {
   width: 18px;
   height: 18px;
   margin-top: 2px;
-
   flex: 0 0 auto;
-
   color: #3b82f6;
 }
 
@@ -360,7 +320,6 @@
 .descricoes-processo {
   width: 100%;
   min-width: 0;
-
   display: flex;
   flex-direction: column;
   gap: 5px;
@@ -370,16 +329,13 @@
   width: 100%;
   min-width: 0;
   min-height: 30px;
-
   display: grid;
   grid-template-columns: 22px 92px minmax(0, 1fr);
   align-items: center;
   gap: 8px;
-
   color: #1e293b;
 }
 
-/* Sem linhas divisórias entre POP, Fluxograma e Mapa Visual */
 .descricao-processo-item + .descricao-processo-item {
   margin-top: 3px;
   padding-top: 0;
@@ -389,10 +345,8 @@
 .descricao-tipo-icone {
   width: 18px;
   height: 18px;
-
   justify-self: center;
   flex: 0 0 auto;
-
   color: var(--pops-primary);
   stroke-width: 2;
 }
@@ -411,9 +365,7 @@
 
 .descricao-prefixo {
   min-width: 0;
-
   color: #0369a1;
-
   font-size: 0.7rem;
   font-weight: 800;
   line-height: 1.4;
@@ -423,13 +375,10 @@
 
 .descricao-texto {
   min-width: 0;
-
   color: #1e293b;
-
   font-size: 0.86rem;
   font-weight: 600;
   line-height: 1.4;
-
   overflow-wrap: anywhere;
 }
 
@@ -440,25 +389,20 @@
 
 .td-setor {
   width: var(--pops-sector-width);
-
   color: #475569;
   text-align: left;
 }
 
 .badge-setor-tabela {
   padding: 0;
-
   color: #475569;
   background: transparent;
-
   border: none;
   border-radius: 0;
-
   font-size: 0.76rem;
   font-weight: 700;
   line-height: 1.4;
   letter-spacing: 0.015em;
-
   overflow-wrap: anywhere;
 }
 
@@ -471,7 +415,6 @@
   width: calc(var(--pops-download-width) / 3);
   padding-right: 9px !important;
   padding-left: 9px !important;
-
   text-align: center;
 }
 
@@ -479,26 +422,21 @@
   min-width: 90px;
   min-height: 36px;
   padding: 7px 11px;
-
   display: inline-flex;
   align-items: center;
   justify-content: center;
   gap: 6px;
-
   color: var(--pops-primary-dark);
   background: var(--pops-primary-light);
-
   border: 1px solid #bae6fd;
   border-radius: 8px;
-
   font-size: 0.79rem;
   font-weight: 750;
   line-height: 1;
-
   cursor: pointer;
   text-decoration: none;
-
-  transition:
+  box-sizing: border-box;
+  transition: 
     color 150ms ease,
     background-color 150ms ease,
     border-color 150ms ease,
@@ -510,7 +448,6 @@
   color: #ffffff;
   background: var(--pops-primary);
   border-color: var(--pops-primary);
-
   box-shadow: 0 6px 15px rgba(2, 132, 199, 0.2);
   transform: translateY(-1px);
 }
@@ -521,8 +458,7 @@
 
 .documento-download-link:focus-visible {
   outline: none;
-
-  box-shadow:
+  box-shadow: 
     0 0 0 3px rgba(14, 165, 233, 0.22),
     0 5px 14px rgba(2, 132, 199, 0.15);
 }
@@ -530,12 +466,9 @@
 .documento-download-link:disabled {
   color: #64748b;
   background: #f1f5f9;
-
   border-color: var(--pops-border);
-
   cursor: wait;
   opacity: 0.72;
-
   transform: none;
   box-shadow: none;
 }
@@ -544,9 +477,7 @@
   display: inline-flex;
   align-items: center;
   justify-content: center;
-
   color: #cbd5e1;
-
   font-size: 1rem;
   font-weight: 600;
 }
@@ -558,14 +489,11 @@
 
 .pops-empty {
   padding: 48px 20px !important;
-
   color: var(--pops-muted);
   background: #ffffff;
-
   font-size: 0.9rem;
   font-weight: 600;
   line-height: 1.5;
-
   text-align: center !important;
 }
 
@@ -577,42 +505,33 @@
 .pops-error {
   margin-bottom: 18px;
   padding: 13px 15px;
-
   display: flex;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
-
   color: #991b1b;
   background: var(--pops-danger-light);
-
   border: 1px solid #fecdd3;
   border-radius: 10px;
-
   font-size: 0.86rem;
   font-weight: 650;
-
+  box-sizing: border-box;
+  width: 100%;
   box-shadow: 0 4px 14px rgba(190, 18, 60, 0.05);
 }
 
 .pops-error button {
   min-height: 34px;
   padding: 6px 12px;
-
   flex: 0 0 auto;
-
   color: #991b1b;
   background: #ffffff;
-
   border: 1px solid #fda4af;
   border-radius: 7px;
-
   font-size: 0.78rem;
   font-weight: 750;
-
   cursor: pointer;
-
-  transition:
+  transition: 
     color 150ms ease,
     background-color 150ms ease,
     border-color 150ms ease;
@@ -626,7 +545,6 @@
 
 .pops-error button:focus-visible {
   outline: none;
-
   box-shadow: 0 0 0 3px rgba(225, 29, 72, 0.18);
 }
 
@@ -649,7 +567,6 @@
   .setor-chip {
     min-height: 33px;
     padding: 0 11px;
-
     font-size: 0.68rem;
   }
 
@@ -660,7 +577,6 @@
   .documento-download-link {
     min-width: 84px;
     padding: 7px 8px;
-
     font-size: 0.74rem;
   }
 }
@@ -678,13 +594,10 @@
 
   .setores-container {
     flex-wrap: nowrap;
-
     overflow-x: auto;
     overflow-y: hidden;
-
     scroll-snap-type: x proximity;
     -webkit-overflow-scrolling: touch;
-
     scrollbar-width: thin;
     scrollbar-color: #cbd5e1 transparent;
   }
@@ -750,7 +663,6 @@
   .setores-container {
     margin-bottom: 17px;
     padding: 9px;
-
     gap: 7px;
     border-radius: 11px;
   }
@@ -758,16 +670,14 @@
   .setor-chip {
     min-height: 32px;
     padding: 0 11px;
-
     font-size: 0.65rem;
     border-radius: 8px;
   }
 
   .pops-table-wrapper {
-    width: calc(100% + 8px);
-    margin-right: -4px;
-    margin-left: -4px;
-
+    width: 100%;
+    margin-right: 0;
+    margin-left: 0;
     border-radius: 11px;
   }
 
@@ -777,7 +687,6 @@
 
   .pops-table thead th {
     padding: 12px 13px;
-
     font-size: 0.66rem;
   }
 
@@ -808,7 +717,6 @@
     min-width: 78px;
     min-height: 33px;
     padding: 6px 7px;
-
     font-size: 0.68rem;
     border-radius: 7px;
   }
@@ -818,37 +726,31 @@
     grid-template-areas:
       "icone prefixo"
       "icone texto";
-
     align-items: start;
     gap: 3px 7px;
   }
 
   .descricao-tipo-icone {
     grid-area: icone;
-
     width: 16px;
     height: 16px;
     margin-top: 2px;
-
     justify-self: center;
   }
 
   .descricao-prefixo {
     grid-area: prefixo;
-
     font-size: 0.64rem;
   }
 
   .descricao-texto {
     grid-area: texto;
-
     font-size: 0.78rem;
   }
 
   .pops-error {
     align-items: stretch;
     flex-direction: column;
-
     font-size: 0.82rem;
   }
 
@@ -890,7 +792,6 @@
   .documento-download-link {
     min-width: 74px;
     padding: 6px;
-
     font-size: 0.64rem;
   }
 }
