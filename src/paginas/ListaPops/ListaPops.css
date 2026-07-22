@@ -1,0 +1,186 @@
+.pops-header {
+  margin-bottom: 24px;
+}
+
+.pops-header h2 {
+  font-size: 26px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 6px 0;
+}
+
+.pops-header p {
+  color: #475569;
+  font-size: 14px;
+  margin: 0 0 16px 0;
+}
+
+.pops-search-input {
+  width: 100%;
+  max-width: 400px;
+  padding: 10px 14px;
+  border: 1px solid #cbd5e1;
+  border-radius: 6px;
+  font-size: 14px;
+  outline: none;
+  background-color: #ffffff;
+  transition: border-color 0.2s;
+}
+
+.pops-search-input:focus {
+  border-color: #0284c7;
+  box-shadow: 0 0 0 3px rgba(2, 132, 199, 0.1);
+}
+
+/* Estilo de Abas / Pastas em blocos (Estilo Portal Acadêmico) */
+.setores-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-bottom: 0;
+  padding-bottom: 0;
+}
+
+.setor-chip {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background-color: #f0f6fc;
+  color: #0369a1;
+  border: 1px solid #bae6fd;
+  border-bottom: 1px solid #7dd3fc;
+  padding: 8px 16px;
+  border-radius: 6px 6px 0 0;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.15s ease;
+}
+
+.setor-chip svg {
+  display: none; /* Mantém limpo igual ao modelo enviado */
+}
+
+.setor-chip:hover {
+  background-color: #e0f2fe;
+  color: #0284c7;
+}
+
+.setor-chip.active {
+  background-color: #ffffff;
+  color: #0f172a;
+  border-color: #cbd5e1;
+  border-bottom: 2px solid #ffffff; /* Conecta visualmente com a tabela */
+  position: relative;
+  z-index: 2;
+  font-weight: 700;
+}
+
+/* Tabela Estilo Repositório Organizacional */
+.pops-table-wrapper {
+  background: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: 0 6px 6px 6px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  margin-top: -1px; /* Encaixa perfeitamente na aba ativa */
+  position: relative;
+  z-index: 1;
+}
+
+.pops-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+.pops-table th {
+  background-color: #e2e8f0;
+  color: #1e293b;
+  font-weight: 700;
+  padding: 12px 20px;
+  border-bottom: 1px solid #cbd5e1;
+}
+
+.pops-table td {
+  padding: 14px 20px;
+  border-bottom: 1px solid #e2e8f0;
+  color: #1e293b;
+  vertical-align: middle;
+}
+
+.pops-table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.pops-table tbody tr:hover {
+  background-color: #f8fafc;
+}
+
+.td-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 400;
+}
+
+.file-icon {
+  color: #64748b;
+  font-size: 16px;
+}
+
+.badge-setor {
+  display: none; /* Oculta o badge já que a pasta filtra o setor */
+}
+
+.td-actions {
+  display: flex;
+  gap: 16px;
+  justify-content: flex-end;
+}
+
+.th-actions {
+  text-align: right;
+  width: 180px;
+}
+
+.btn-action {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  padding: 0;
+  background: transparent;
+  border: none;
+  font-size: 14px;
+  font-weight: 500;
+  text-decoration: none;
+  cursor: pointer;
+  transition: color 0.2s;
+}
+
+.btn-action.view {
+  color: #0284c7;
+}
+
+.btn-action.view:hover {
+  color: #0369a1;
+  text-decoration: underline;
+}
+
+.btn-action.download {
+  color: #0284c7;
+}
+
+.btn-action.download:hover {
+  color: #0369a1;
+  text-decoration: underline;
+}
+
+.pops-empty {
+  text-align: center;
+  color: #64748b;
+  padding: 35px !important;
+}

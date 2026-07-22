@@ -1,0 +1,83 @@
+.home-hero {
+  background: linear-gradient(135deg, #0284c7 0%, #0f172a 100%);
+  color: #ffffff;
+  padding: 40px;
+  border-radius: 12px;
+  margin-bottom: 30px;
+}
+
+.home-hero h1 {
+  margin: 0 0 10px 0;
+  font-size: 26px;
+}
+
+.home-hero p {
+  margin: 0;
+  font-size: 15px;
+  opacity: 0.9;
+  max-width: 600px;
+}
+
+.home-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+
+.home-card {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  padding: 24px;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  flex-direction: column;
+}
+
+.home-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 16px;
+}
+
+.card-icon.folder {
+  background-color: #e0f2fe;
+  color: #0284c7;
+}
+
+.card-icon.admin {
+  background-color: #f1f5f9;
+  color: #475569;
+}
+
+.home-card h3 {
+  margin: 0 0 8px 0;
+  font-size: 18px;
+  color: #1e293b;
+}
+
+.home-card p {
+  margin: 0 0 20px 0;
+  font-size: 14px;
+  color: #64748b;
+  flex: 1;
+}
+
+.card-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #0284c7;
+}

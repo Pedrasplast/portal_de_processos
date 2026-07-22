@@ -1,0 +1,113 @@
+.app-sidebar {
+  width: 260px;
+  background: linear-gradient(180deg, #0f172a 0%, #090d16 100%);
+  color: #f8fafc;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  border-right: 1px solid #1e293b;
+  box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1);
+  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 100;
+  box-sizing: border-box;
+}
+
+.sidebar-brand {
+  padding: 24px 20px;
+  border-bottom: 1px solid #1e293b;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+}
+
+.sidebar-brand h3 {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #38bdf8;
+  letter-spacing: -0.3px;
+  white-space: nowrap;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar-menu {
+  display: flex;
+  flex-direction: column;
+  padding: 20px 12px;
+  gap: 8px;
+  overflow-y: auto;
+}
+
+.sidebar-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: transparent;
+  border: none;
+  color: #94a3b8;
+  padding: 12px 16px;
+  text-align: left;
+  font-size: 14px;
+  font-weight: 500;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sidebar-item svg {
+  min-width: 20px;
+  font-size: 18px;
+  transition: transform 0.2s ease;
+}
+
+.sidebar-item:hover {
+  background-color: #1e293b;
+  color: #f8fafc;
+}
+
+.sidebar-item:hover svg {
+  transform: scale(1.05);
+}
+
+.sidebar-item.active {
+  background-color: #0284c7;
+  color: #ffffff;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+}
+
+/* Responsividade: Transforma em barra lateral compacta (só ícones) em telas menores */
+@media (max-width: 768px) {
+  .app-sidebar {
+    width: 76px;
+  }
+
+  .sidebar-brand {
+    padding: 24px 12px;
+    justify-content: center;
+  }
+
+  .sidebar-brand h3 {
+    display: none; /* Oculta o texto da marca em telas pequenas */
+  }
+
+  .sidebar-menu {
+    padding: 16px 8px;
+    align-items: center;
+  }
+
+  .sidebar-item {
+    justify-content: center;
+    padding: 12px;
+    gap: 0;
+  }
+
+  /* Oculta o texto do item de menu, mostrando apenas o ícone centralizado */
+  .sidebar-item span, 
+  .sidebar-item .menu-text {
+    display: none; 
+  }
+}
