@@ -1,16 +1,38 @@
+/* =========================================
+   ESTRUTURA DESKTOP (Padrão)
+   ========================================= */
+
 .app-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
   width: 260px;
   background: linear-gradient(180deg, #0f172a 0%, #090d16 100%);
   color: #f8fafc;
   display: flex;
   flex-direction: column;
-  min-height: 100vh;
+  height: 100vh;
+  height: 100dvh;
   border-right: 1px solid #1e293b;
   box-shadow: 4px 0 24px rgba(0, 0, 0, 0.1);
-  transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  z-index: 100;
+  transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
   box-sizing: border-box;
   flex-shrink: 0;
+  transform: translateX(0); /* Garante que fica visível no desktop */
+}
+
+/* IMPORTANTE: Ajuste o seletor abaixo com a classe do container principal da sua aplicação 
+   para que ele abra espaço para a sidebar fixa no desktop e não fique por baixo dela */
+.main-content, 
+.dashboard-container, 
+main {
+  margin-left: 260px;
+  width: calc(100% - 260px);
+  box-sizing: border-box;
+  min-height: 100vh;
+  min-height: 100dvh;
+  transition: margin-left 0.3s cubic-bezier(0.4, 0, 0.2, 1), width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 .sidebar-brand {
@@ -40,6 +62,7 @@
   overflow-y: auto;
   box-sizing: border-box;
   width: 100%;
+  -webkit-overflow-scrolling: touch;
 }
 
 .sidebar-item {
@@ -59,6 +82,7 @@
   white-space: nowrap;
   width: 100%;
   box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
 }
 
 .sidebar-item svg {
@@ -85,47 +109,78 @@
 }
 
 /* =========================================
-   RESPONSIVIDADE (Tablets e Celulares)
+   OVERLAY PARA MOBILE
+   ========================================= */
+
+.sidebar-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  height: 100dvh;
+  background-color: rgba(15, 23, 42, 0.6);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  z-index: 999;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.sidebar-overlay.active {
+  display: block;
+  opacity: 1;
+}
+
+
+/* =========================================
+   RESPONSIVIDADE (Tablets, Android e iOS)
    ========================================= */
 
 @media (max-width: 768px) {
+  /* No celular ela sai da tela por padrão */
   .app-sidebar {
-    width: 76px;
+    transform: translateX(-100%);
+    width: 280px;
+    box-shadow: 10px 0 30px rgba(0, 0, 0, 0.3);
+  }
+
+  /* Quando aberta pelo JS, entra na tela */
+  .app-sidebar.open {
+    transform: translateX(0);
+  }
+
+  /* No celular o conteúdo ocupa 100% da largura, sem margem à esquerda */
+  .main-content, 
+  .dashboard-container, 
+  main {
+    margin-left: 0;
+    width: 100%;
   }
 
   .sidebar-brand {
-    padding: 24px 12px;
-    justify-content: center;
+    padding: 24px 20px;
+    justify-content: flex-start;
   }
 
   .sidebar-brand h3 {
-    display: none; 
+    display: block; 
   }
 
   .sidebar-menu {
-    padding: 16px 8px;
-    align-items: center;
+    padding: 20px 12px;
+    align-items: stretch;
   }
 
   .sidebar-item {
-    justify-content: center;
-    padding: 12px;
-    gap: 0;
+    justify-content: flex-start;
+    padding: 14px 16px;
+    gap: 14px;
   }
 
   .sidebar-item span, 
   .sidebar-item .menu-text {
-    display: none; 
-  }
-}
-
-/* Em smartphones muito pequenos, garante fluidez total sem quebrar elementos */
-@media (max-width: 480px) {
-  .app-sidebar {
-    width: 64px;
-  }
-  
-  .sidebar-item {
-    padding: 10px;
+    display: inline; 
   }
 }
