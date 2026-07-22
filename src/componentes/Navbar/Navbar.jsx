@@ -99,9 +99,14 @@ const Navbar = memo(function Navbar() {
 
   return (
     <header className="app-navbar">
-      <div className="navbar-left">
-        <h2>Portal de Processos</h2>
+     <div className="navbar-logo">
+        <img
+          src="/Logo_Pedrasplast.png"
+          alt="Logo"
+          className="navbar-logo"
+        />
       </div>
+      
 
       <div className="navbar-right">
         {logado && (
