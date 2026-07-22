@@ -9,6 +9,7 @@ import {
   FiFileText,
   FiGitBranch,
   FiMap,
+  FiPlus,
 } from 'react-icons/fi';
 
 import { supabase } from '../../Servicos/clienteSupabase';
@@ -82,10 +83,6 @@ function normalizarTipoDocumento(tipo = '') {
   return 'POP';
 }
 
-/*
- * POP-01 | PROCESSO PCP
- * Retorna: PROCESSO PCP
- */
 function extrairDescricaoDocumento(titulo = '') {
   const tituloAjustado = titulo
     .trim()
@@ -102,11 +99,6 @@ function extrairDescricaoDocumento(titulo = '') {
   return resultado[1].trim();
 }
 
-/*
- * POP-01 -> 01
- * FLUXOGRAMA-01 -> 01
- * MAPA VISUAL-01 -> 01
- */
 function extrairCodigoDocumento(titulo = '') {
   const tituloNormalizado = titulo
     .normalize('NFD')
@@ -136,17 +128,35 @@ function extrairCodigoDocumento(titulo = '') {
 
 function ListaPops() {
   const [pops, setPops] = useState([]);
-
-  const [setorSelecionado, setSetorSelecionado] =
-    useState('TODOS');
-
-  const [carregando, setCarregando] =
-    useState(true);
-
+  const [setorSelecionado, setSetorSelecionado] = useState('TODOS');
+  const [carregando, setCarregando] = useState(true);
   const [erro, setErro] = useState('');
+  const [arquivoBaixando, setArquivoBaixando] = useState(null);
+  const [isAdmin, setIsAdmin] = useState(false);
 
-  const [arquivoBaixando, setArquivoBaixando] =
-    useState(null);
+  // Verifica se o usuário logado é admin para exibir controles de inserção/exclusão
+  useEffect(() => {
+    async function verificarPermissaoAdmin() {
+      try {
+        const { data: { user } } = await supabase.auth.getUser();
+        if (user) {
+          const { data: perfil } = await supabase
+            .from('profiles')
+            .select('regra')
+            .eq('id', user.id)
+            .single();
+
+          if (perfil && perfil.regra === 'admin') {
+            setIsAdmin(true);
+          }
+        }
+      } catch (err) {
+        console.error('Erro ao verificar permissão:', err);
+      }
+    }
+
+    verificarPermissaoAdmin();
+  }, []);
 
   const carregarPops = useCallback(async () => {
     setCarregando(true);
@@ -189,17 +199,6 @@ function ListaPops() {
     carregarPops();
   }, [carregarPops]);
 
-  /*
-   * Agrupa por setor + número.
-   *
-   * Exemplo:
-   *
-   * POP-01
-   * FLUXOGRAMA-01
-   * MAPA VISUAL-01
-   *
-   * Os três ficam na mesma linha.
-   */
   const processosAgrupados = useMemo(() => {
     const mapaProcessos = new Map();
 
@@ -227,11 +226,11 @@ function ListaPops() {
 
       const chave = codigoDocumento
         ? `${normalizarTexto(
-          setor,
-        )}::${codigoDocumento}`
+            setor,
+          )}::${codigoDocumento}`
         : `${normalizarTexto(
-          setor,
-        )}::sem-codigo::${documento.id}`;
+            setor,
+          )}::sem-codigo::${documento.id}`;
 
       if (!mapaProcessos.has(chave)) {
         mapaProcessos.set(chave, {
@@ -246,10 +245,6 @@ function ListaPops() {
       const processo =
         mapaProcessos.get(chave);
 
-      /*
-       * Salva uma descrição independente
-       * para cada tipo de documento.
-       */
       processo.descricoes[tipoDocumento] =
         descricao;
 
@@ -364,15 +359,42 @@ function ListaPops() {
 
   return (
     <MainLayout>
-      <div className="pops-header">
-        <h2>
-          Repositório de Processos Organizacionais
-        </h2>
+      <div className="pops-header" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '16px' }}>
+        <div>
+          <h2>
+            Repositório de Processos Organizacionais
+          </h2>
+          <p>
+            Consulte e baixe os documentos operacionais
+            padronizados por setor.
+          </p>
+        </div>
 
-        <p>
-          Consulte e baixe os documentos operacionais
-          padronizados por setor.
-        </p>
+        {/* Botão de inserção visível apenas para administradores */}
+        {isAdmin && (
+          <button 
+            type="button" 
+            className="btn-inserir-pop"
+            onClick={() => {
+              // Aqui você pode redirecionar para a tela de cadastro ou abrir um modal de inserção
+              alert('Redirecionar para tela de cadastro de POP');
+            }}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              backgroundColor: '#0284c7',
+              color: '#fff',
+              border: 'none',
+              padding: '10px 16px',
+              borderRadius: '8px',
+              fontWeight: 600,
+              cursor: 'pointer'
+            }}
+          >
+            <FiPlus /> Inserir Novo Documento
+          </button>
+        )}
       </div>
 
       <div className="setores-container">

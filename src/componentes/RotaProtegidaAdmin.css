@@ -1,0 +1,9 @@
+.rota-admin-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: sans-serif;
+  color: #475569;
+  background-color: #f8fafc;
+}

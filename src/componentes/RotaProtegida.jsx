@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { supabase } from '../Servicos/clienteSupabase';
+import { FiHome } from 'react-icons/fi';
+import './RotaProtegida.css';
 
 function RotaProtegida({ children }) {
   const [status, setStatus] = useState('carregando'); // 'carregando', 'liberado', 'bloqueado'
+  const navigate = useNavigate();
 
   useEffect(() => {
     let isMounted = true;
@@ -15,16 +18,15 @@ function RotaProtegida({ children }) {
       }
 
       try {
-        // Seleciona apenas a coluna 'regra' para otimizar a query no Supabase
         const { data: perfil, error: perfilError } = await supabase
           .from('profiles')
-          .select('regra')
+          .select('id')
           .eq('id', sessionUser.id)
           .single();
 
         if (!isMounted) return;
 
-        if (perfilError || !perfil || perfil.regra !== 'admin') {
+        if (perfilError || !perfil) {
           setStatus('bloqueado');
         } else {
           setStatus('liberado');
@@ -34,7 +36,6 @@ function RotaProtegida({ children }) {
       }
     }
 
-    // 1. Verificação inicial rápida da sessão
     supabase.auth.getSession().then(({ data: { session } }) => {
       if (!isMounted) return;
       if (session?.user) {
@@ -44,7 +45,6 @@ function RotaProtegida({ children }) {
       }
     });
 
-    // 2. Ouve alterações de autenticação em tempo real
     const { data: { subscription } } = supabase.auth.onAuthStateChange((_event, session) => {
       if (!isMounted) return;
       if (session?.user) {
@@ -62,14 +62,31 @@ function RotaProtegida({ children }) {
 
   if (status === 'carregando') {
     return (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', fontFamily: 'sans-serif' }}>
+      <div className="rota-protegida-loading">
         <p>Verificando credenciais de acesso...</p>
       </div>
     );
   }
 
   if (status === 'bloqueado') {
-    return <Navigate to="/login" replace />;
+    return (
+      <div className="rota-protegida-container">
+        <div className="rota-protegida-card">
+          <h3>Acesso Restrito</h3>
+          <p>
+            Seu usuário ainda não possui liberação para visualizar os POPs. Por favor, <strong>peça liberação para o administrador</strong> do sistema.
+          </p>
+
+          <button
+            type="button"
+            onClick={() => navigate('/')}
+            className="rota-protegida-btn"
+          >
+            <FiHome size={16} /> Voltar à Página Inicial
+          </button>
+        </div>
+      </div>
+    );
   }
 
   return children;

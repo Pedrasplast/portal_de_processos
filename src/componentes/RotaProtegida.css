@@ -1,0 +1,64 @@
+.rota-protegida-loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: sans-serif;
+  color: #475569;
+}
+
+.rota-protegida-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  font-family: sans-serif;
+  text-align: center;
+  padding: 20px;
+  background-color: #f8fafc;
+  box-sizing: border-box;
+}
+
+.rota-protegida-card {
+  background: #fff3cd;
+  color: #856404;
+  border: 1px solid #ffeeba;
+  padding: 28px 32px;
+  border-radius: 8px;
+  max-width: 450px;
+  width: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+  box-sizing: border-box;
+}
+
+.rota-protegida-card h3 {
+  margin: 0 0 12px 0;
+  font-size: 20px;
+}
+
+.rota-protegida-card p {
+  margin: 0 0 20px 0;
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.rota-protegida-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background-color: #0284c7;
+  color: #fff;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 6px;
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.rota-protegida-btn:hover {
+  background-color: #0369a1;
+}

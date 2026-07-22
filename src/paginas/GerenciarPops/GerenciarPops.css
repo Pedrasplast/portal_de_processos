@@ -339,3 +339,367 @@
     width: 100%;
   }
 }
+
+/* ==========================================
+   ESTILOS GERAIS DO PAINEL DE POPS
+   ========================================== */
+
+.pops-header {
+  margin-bottom: 24px;
+}
+
+.pops-header h2 {
+  font-size: 24px;
+  color: #2c3e50;
+  margin-bottom: 4px;
+}
+
+.pops-header p {
+  color: #7f8c8d;
+  font-size: 14px;
+}
+
+/* ==========================================
+   ALERTAS E MENSAGENS
+   ========================================== */
+
+.alert-box {
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+}
+
+.alert-box.sucesso {
+  background-color: #d4edda;
+  color: #155724;
+  border: 1px solid #c3e6cb;
+}
+
+.alert-box.erro {
+  background-color: #f8d7da;
+  color: #721c24;
+  border: 1px solid #f5c6cb;
+}
+
+/* ==========================================
+   FORMULÁRIOS
+   ========================================== */
+
+.admin-form {
+  background: #ffffff;
+  padding: 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: 30px;
+  border: 1px solid #e1e8ed;
+}
+
+.admin-form h3 {
+  font-size: 18px;
+  color: #34495e;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.form-group {
+  margin-bottom: 16px;
+}
+
+.form-group label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #4a5568;
+  margin-bottom: 6px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="password"],
+.form-select-setor {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  font-size: 14px;
+  color: #2d3748;
+  background-color: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.form-group input:focus,
+.form-select-setor:focus {
+  outline: none;
+  border-color: #3182ce;
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.15);
+}
+
+/* Input de arquivo personalizado */
+.form-group input[type="file"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px dashed #cbd5e0;
+  border-radius: 6px;
+  background-color: #f7fafc;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+/* Campo de Título Composto (Prefixo + Input) */
+.titulo-composto {
+  display: flex;
+  align-items: stretch;
+  border: 1px solid #cbd5e0;
+  border-radius: 6px;
+  overflow: hidden;
+  background-color: #fff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.titulo-composto:focus-within {
+  border-color: #3182ce;
+  box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.15);
+}
+
+.titulo-prefixo {
+  background-color: #edf2f7;
+  color: #4a5568;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+  font-size: 13px;
+  font-weight: 600;
+  border-right: 1px solid #cbd5e0;
+  white-space: nowrap;
+}
+
+.titulo-composto input {
+  border: none !important;
+  box-shadow: none !important;
+  flex: 1;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+/* Botões de Ação Principais */
+.btn-submit {
+  background-color: #2b6cb0;
+  color: white;
+  border: none;
+  padding: 11px 20px;
+  border-radius: 6px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  transition: background-color 0.2s;
+  width: 100%;
+  margin-top: 8px;
+}
+
+.btn-submit:hover:not(:disabled) {
+  background-color: #2c5282;
+}
+
+.btn-submit:disabled {
+  background-color: #a0aec0;
+  cursor: not-allowed;
+}
+
+/* ==========================================
+   TABELAS (POPS E USUÁRIOS)
+   ========================================== */
+
+.pops-table-wrapper {
+  background: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e1e8ed;
+  overflow-x: auto;
+}
+
+.pops-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 14px;
+}
+
+.pops-table th {
+  background-color: #f7fafc;
+  color: #4a5568;
+  padding: 12px 16px;
+  font-weight: 600;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.pops-table td {
+  padding: 12px 16px;
+  border-bottom: 1px solid #edf2f7;
+  color: #2d3748;
+  vertical-align: middle;
+}
+
+.pops-table tr:last-child td {
+  border-bottom: none;
+}
+
+.pops-table tr:hover {
+  background-color: #f8fafc;
+}
+
+.pops-empty {
+  text-align: center;
+  color: #a0aec0;
+  padding: 24px !important;
+  font-style: italic;
+}
+
+.td-title {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 500;
+}
+
+.file-icon {
+  color: #3182ce;
+  font-size: 18px;
+  flex-shrink: 0;
+}
+
+.badge-tipo {
+  background-color: #edf2f7;
+  color: #2b6cb0;
+  padding: 4px 8px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.td-actions {
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Botões de Excluir / Revogar */
+.btn-delete {
+  background-color: #fff5f5;
+  color: #e53e3e;
+  border: 1px solid #feb2b2;
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  transition: all 0.2s;
+}
+
+.btn-delete:hover {
+  background-color: #e53e3e;
+  color: white;
+  border-color: #e53e3e;
+}
+
+/* ==========================================
+   MODAL DE CONFIRMAÇÃO
+   ========================================== */
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(2px);
+}
+
+.modal-card {
+  background: white;
+  padding: 24px;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  animation: modalFadeIn 0.2s ease-out;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.modal-card h3 {
+  font-size: 18px;
+  color: #2d3748;
+  margin-bottom: 10px;
+}
+
+.modal-card p {
+  font-size: 14px;
+  color: #4a5568;
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+.btn-cancelar {
+  background-color: #edf2f7;
+  color: #4a5568;
+  border: 1px solid #cbd5e0;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-cancelar:hover {
+  background-color: #e2e8f0;
+}
+
+.btn-confirmar-exclusao {
+  background-color: #e53e3e;
+  color: white;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.btn-confirmar-exclusao:hover {
+  background-color: #c53030;
+}
